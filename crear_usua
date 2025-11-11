@@ -1,0 +1,1 @@
+crear_usuario('angel', 'angel123', 'angel@escuela63.edu.mx', 'Angel', 'Velasco', 'admin')
