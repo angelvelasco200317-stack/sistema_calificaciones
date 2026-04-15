@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; font-size: 12px; }
+        .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        .header h1 { font-size: 16px; margin: 5px 0; font-weight: bold; }
+        .header h2 { font-size: 14px; margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid black; padding: 6px; text-align: center; font-size: 11px; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        .materia-cell { text-align: left; padding-left: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>OAXACA</h1>
+        <h2>ESCUELA SECUNDARIA TÉCNICA NÚM. 63 SANTIAGO</h2>
+        <h2>CICLO ESCOLAR: {{ ciclo_escolar }}</h2>
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <p><strong>Estudiante:</strong> {{ nombre_completo }}</p>
+        <p><strong>Matrícula:</strong> {{ estudiante.matricula }}</p>
+        <p><strong>Grado:</strong> {{ estudiante.grado }} <strong>Grupo:</strong> {{ estudiante.grupo }}</p>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 40%;">DISCIPLINAS</th>
+                <th>1er</th>
+                <th>2do</th>
+                <th>3er</th>
+                <th>FINAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for materia, califs in calificaciones.items %}
+            <tr>
+                <td class="materia-cell">{{ materia }}</td>
+                <td>{% if califs.1 %}{{ califs.1 }}{% else %}-{% endif %}</td>
+                <td>{% if califs.2 %}{{ califs.2 }}{% else %}-{% endif %}</td>
+                <td>{% if califs.3 %}{{ califs.3 }}{% else %}-{% endif %}</td>
+                <td>{% if califs.final %}{{ califs.final }}{% else %}-{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div style="margin-top: 30px; text-align: center; font-size: 10px; color: #666;">
+        <p>Fecha de generación: {% now "d/m/Y H:i" %}</p>
+        <p>Este documento es oficial - Escuela Secundaria Técnica N°63</p>
+    </div>
+</body>
+</html>

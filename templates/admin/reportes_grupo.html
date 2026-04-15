@@ -1,0 +1,31 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div id="content-main" style="margin: 20px 0;">
+    <h1>📊 Reportes por Grupo - Generar PDF</h1>
+    
+    <div class="module" style="background: #f8f8f8; padding: 20px; border-radius: 5px; margin: 20px 0;">
+        <h2>🎓 Seleccione un grupo para generar el reporte en PDF</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+            {% for grupo in botones_grupo %}
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: white; text-align: center;">
+                <h3>{{ grupo.grado }}° "{{ grupo.grupo }}"</h3>
+                <p style="color: #666; font-size: 0.9em; margin: 5px 0;">
+                    {{ grupo.estudiantes_count }} estudiante{{ grupo.estudiantes_count|pluralize }}
+                </p>
+                <a href="{{ grupo.url }}" target="_blank" 
+                   style="display: inline-block; background: #4CAF50; color: white; padding: 10px 15px; 
+                          text-decoration: none; border-radius: 4px; margin-top: 10px;">
+                    📄 Generar PDF
+                </a>
+            </div>
+            {% empty %}
+            <div style="grid-column: 1 / -1; text-align: center; padding: 20px;">
+                <p>No hay grupos registrados en el sistema.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

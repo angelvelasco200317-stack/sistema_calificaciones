@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Boleta de Calificaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 12px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 16px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .header h2 {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .header h3 {
+            font-size: 13px;
+            margin: 5px 0;
+            color: #333;
+        }
+        .student-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .info-label {
+            font-weight: bold;
+            font-size: 11px;
+            color: #666;
+        }
+        .info-value {
+            font-size: 12px;
+            padding: 3px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 6px;
+            text-align: center;
+            font-size: 11px;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .materia-cell {
+            text-align: left;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+        .periodo-header {
+            background-color: #e6f3ff;
+        }
+        .final-header {
+            background-color: #ffe6e6;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+        .firmas {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .firma {
+            text-align: center;
+            width: 30%;
+        }
+        .firma hr {
+            border: 1px solid black;
+            width: 80%;
+            margin: 5px 0;
+        }
+        .promedio-section {
+            text-align: right;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .sin-calificacion {
+            color: #999;
+            font-style: italic;
+        }
+        .seccion-header {
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            margin: 15px 0 5px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>OAXACA</h1>
+        <h2>ESCUELA SECUNDARIA TÉCNICA NÚM. 63 SANTIAGO</h2>
+        <h3>CICLO ESCOLAR: {{ ciclo_escolar }}</h3>
+    </div>
+    
+    <div class="student-info">
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">PRIMER APELLIDO</span>
+                <span class="info-value">
+                    {% if estudiante.usuario %}
+                        {{ estudiante.usuario.last_name|default:"-" }}
+                    {% else %}
+
+                        {% with nombre=nombre_estudiante|default:"" %}
+                            {% if nombre %}
+                                {% with partes=nombre.split %}
+                                    {{ partes|last|default:"-" }}
+                                {% endwith %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        {% endwith %}
+                    {% endif %}
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">SEGUNDO APELLIDO</span>
+                <span class="info-value">-</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">NOMBRE(S)</span>
+                <span class="info-value">
+                    {% if estudiante.usuario %}
+                        {{ estudiante.usuario.first_name|default:"-" }}
+                    {% else %}
+                        {{ nombre_estudiante|default:"-" }}
+                    {% endif %}
+                </span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">GRADO</span>
+                <span class="info-value">{{ estudiante.grado|default:"-" }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">GRUPO</span>
+                <span class="info-value">{{ estudiante.grupo|default:"-" }}</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">MATRÍCULA</span>
+                <span class="info-value">{{ estudiante.matricula|default:"-" }}</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="seccion-header">CALIFICACIONES POR PERÍODO</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 40%;">DISCIPLINAS / MATERIAS</th>
+                <th class="periodo-header">1er PERIODO</th>
+                <th class="periodo-header">2do PERIODO</th>
+                <th class="periodo-header">3er PERIODO</th>
+                <th class="final-header">CALIFICACIÓN FINAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for materia, califs in calificaciones.items %}
+            <tr>
+                <td class="materia-cell">{{ materia }}</td>
+                <td>
+                    {% if califs.1 and califs.1 != '' %}
+                        {{ califs.1 }}
+                    {% else %}
+                        <span class="sin-calificacion">-</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if califs.2 and califs.2 != '' %}
+                        {{ califs.2 }}
+                    {% else %}
+                        <span class="sin-calificacion">-</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if califs.3 and califs.3 != '' %}
+                        {{ califs.3 }}
+                    {% else %}
+                        <span class="sin-calificacion">-</span>
+                    {% endif %}
+                </td>
+                <td style="font-weight: bold;">
+                    {% if califs.final and califs.final != '' %}
+                        {{ califs.final }}
+                    {% else %}
+                        <span class="sin-calificacion">-</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 15px;">
+                    No hay calificaciones registradas para este estudiante
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% if promedio_general and promedio_general != '' %}
+    <div class="promedio-section">
+        PROMEDIO GENERAL: {{ promedio_general }}
+    </div>
+    {% endif %}
+    
+   
+    <div class="firmas">
+        <div class="firma">
+            <hr>
+            <p>PRIMER PERIODO</p>
+            <p style="font-size: 10px; margin-top: 5px;">Vo.Bo. DIRECTOR</p>
+        </div>
+        <div class="firma">
+            <hr>
+            <p>SEGUNDO PERIODO</p>
+            <p style="font-size: 10px; margin-top: 5px;">Vo.Bo. DIRECTOR</p>
+        </div>
+        <div class="firma">
+            <hr>
+            <p>TERCER PERIODO</p>
+            <p style="font-size: 10px; margin-top: 5px;">Vo.Bo. DIRECTOR</p>
+        </div>
+    </div>
+    
+   
+    <div class="footer">
+        <p>Fecha de generación: {% now "d/m/Y H:i" %}</p>
+        <p>Este documento es oficial y fue generado por el Sistema de Gestión de Calificaciones</p>
+        <p>Escuela Secundaria Técnica N°63 Santiago - Oaxaca</p>
+    </div>
+</body>
+</html>
