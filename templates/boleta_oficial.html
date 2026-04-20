@@ -171,7 +171,7 @@
         }
         
         .signature-cell {
-            height: 42px;
+            height: 100px;
             text-align: center;
             vertical-align: middle;
             font-size: 8px;
@@ -269,9 +269,9 @@
         <table class="document-table">
             <tr><td colspan="3" class="section-title">DATOS DEL (DE LA) ALUMNO(A)</th></tr>
             <tr>
-                <td class="data-value"><strong>{{ apellido_paterno|default:"__________"|upper }}</strong></td>
-                <td class="data-value"><strong>{{ apellido_materno|default:"__________"|upper }}</strong></td>
-                <td class="data-value"><strong>{{ nombres|default:"__________"|upper }}</strong></td>
+                <td class="data-value"><strong>{{ apellido_paterno|default:"______________"|upper }}</strong></td>
+                <td class="data-value"><strong>{{ apellido_materno|default:"______________"|upper }}</strong></td>
+                <td class="data-value"><strong>{{ nombres|default:"______________"|upper }}</strong></td>
             </tr>
             <tr>
                 <td class="data-label">PRIMER APELLIDO</td>
@@ -287,7 +287,7 @@
                     {% elif estudiante.grupo %}
                         GRUPO "{{ estudiante.grupo }}"
                     {% else %}
-                        __________
+                        ______________
                     {% endif %}
                 </td>
                 <td style="text-align:center;">
@@ -322,7 +322,7 @@
             </tr>
         </table>
         
-        <!-- CALIFICACIONES -->
+        <!-- CALIFICACIONES - ORDEN CORREGIDO -->
         <table class="document-table">
             <thead>
                 <tr>
@@ -332,25 +332,66 @@
                 </tr>
             </thead>
             <tbody>
-                {% for materia, califs in calificaciones.items %}
+                <!-- 1. ESPAÑOL -->
                 <tr>
-                    <td class="subject-cell">{{ materia|lower }}</td>
-                    <td class="grade-cell">{{ califs.1|default:"---"|floatformat:"0" }}</td>
-                    <td class="faltas-cell"> </td>
+                    <td class="subject-cell">español</td>
+                    <td class="grade-cell">{{ calificaciones.Español.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
                 </tr>
-                {% empty %}
-                <tr><td class="subject-cell">español</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">inglés</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">artes (artes visuales)</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">matemáticas</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">biología</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">geografía</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">historia</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">formación cívica y ética</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">pecuaria (técnica)</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">educación física</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                <tr><td class="subject-cell">tecnología (informática)</td><td class="grade-cell">---</td><td class="faltas-cell">0</td></tr>
-                {% endfor %}
+                <!-- 2. INGLÉS -->
+                <tr>
+                    <td class="subject-cell">inglés</td>
+                    <td class="grade-cell">{{ calificaciones.Inglés.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 3. ARTES (ARTES VISUALES) -->
+                <tr>
+                    <td class="subject-cell">artes (artes visuales)</td>
+                    <td class="grade-cell">{{ calificaciones.Artes.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 4. MATEMÁTICAS -->
+                <tr>
+                    <td class="subject-cell">matemáticas</td>
+                    <td class="grade-cell">{{ calificaciones.Matemáticas.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 5. BIOLOGÍA -->
+                <tr>
+                    <td class="subject-cell">biología</td>
+                    <td class="grade-cell">{{ calificaciones.Biología.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 6. GEOGRAFÍA -->
+                <tr>
+                    <td class="subject-cell">geografía</td>
+                    <td class="grade-cell">{{ calificaciones.Geografía.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 7. HISTORIA -->
+                <tr>
+                    <td class="subject-cell">historia</td>
+                    <td class="grade-cell">{{ calificaciones.Historia.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 8. FORMACIÓN CÍVICA Y ÉTICA -->
+                <tr>
+                    <td class="subject-cell">formación cívica y ética</td>
+                    <td class="grade-cell">{{ calificaciones.Formación_Cívica_y_Ética.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 9. TECNOLOGÍA (solo tecnología, sin informática) -->
+                <tr>
+                    <td class="subject-cell">tecnología</td>
+                    <td class="grade-cell">{{ calificaciones.Tecnología.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
+                <!-- 10. EDUCACIÓN FÍSICA -->
+                <tr>
+                    <td class="subject-cell">educación física</td>
+                    <td class="grade-cell">{{ calificaciones.Educación_Física.1|default:"---"|floatformat:2 }}</td>
+                    <td class="faltas-cell"></td>
+                </tr>
             </tbody>
         </table>
         
@@ -361,22 +402,50 @@
                 <td class="section-title" style="width:50%">INASISTENCIAS TOTALES</td>
             </tr>
             <tr>
-                <td class="grade-cell" style="padding: 6px;"><span class="promedio-value">{{ promedio_general|default:"0.00"|floatformat:2 }}</span></td>
-                <td class="grade-cell" style="padding: 6px;"><span class="inasistencias-value">{{ total_inasistencias|default:" ___ " }}</span></td>
+                <td class="grade-cell" style="padding: 6px;"><span class="promedio-value">{{ promedio_general|default:"0.00"|floatformat:1 }}</span></td>
+                <td class="grade-cell" style="padding: 6px;"><span class="inasistencias-value">{{ total_inasistencias|default:"___" }}</span></td>
             </tr>
         </table>
         
-        <!-- FIRMAS -->
-        <table class="document-table">
-            <tr><td colspan="3" class="section-title">FIRMA DE LA MADRE, PADRE DE FAMILIA O TUTOR(A)</th></tr>
-            <tr>
-                <td class="signature-cell"><strong>PRIMER PERIODO</strong><br>________________________</td>
-                <td class="signature-cell"><strong>SEGUNDO PERIODO</strong><br>________________________</td>
-                <td class="signature-cell"><strong>TERCER PERIODO</strong><br>________________________</td>
-            </tr>
-        </table>
+        <!-- FIRMAS DE LOS TUTORES -->
+<table class="document-table">
+    <tr>
+        <td colspan="3" class="section-title" style="background-color: #722F37; font-size: 11px; letter-spacing: 1px;">
+            ✍️ FIRMA DE LA MADRE, PADRE DE FAMILIA O TUTOR(A) ✍️
+        </th>
+    </tr>
+    <tr>
+        <!-- PRIMER PERIODO -->
+        <td class="signature-cell" style="height: 120px; vertical-align: top; background-color: #fefaf5;">
+            <div style="font-weight: bold; font-size: 11px; color: #722F37; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px dotted #722F37; display: inline-block;">
+                PRIMER PERIODO
+            </div>
+            <div style="margin-top: 15px;"></div>
+            <div style="border-bottom: 2px solid #333; width: 90%; margin: 20px auto 5px auto; border-radius: 2px;"></div>
+            <div style="margin-top: 6px; font-size: 9px; color: #555; font-style: italic;">Firma</div>
+        </td>
         
+        <!-- SEGUNDO PERIODO -->
+        <td class="signature-cell" style="height: 120px; vertical-align: top; background-color: #fefaf5;">
+            <div style="font-weight: bold; font-size: 11px; color: #722F37; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px dotted #722F37; display: inline-block;">
+                SEGUNDO PERIODO
+            </div>
+            <div style="margin-top: 15px;"></div>
+            <div style="border-bottom: 2px solid #333; width: 90%; margin: 20px auto 5px auto; border-radius: 2px;"></div>
+            <div style="margin-top: 6px; font-size: 9px; color: #555; font-style: italic;">Firma</div>
+        </td>
         
+        <!-- TERCER PERIODO -->
+        <td class="signature-cell" style="height: 120px; vertical-align: top; background-color: #fefaf5;">
+            <div style="font-weight: bold; font-size: 11px; color: #722F37; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px dotted #722F37; display: inline-block;">
+                TERCER PERIODO
+            </div>
+            <div style="margin-top: 15px;"></div>
+            <div style="border-bottom: 2px solid #333; width: 90%; margin: 20px auto 5px auto; border-radius: 2px;"></div>
+            <div style="margin-top: 6px; font-size: 9px; color: #555; font-style: italic;">Firma</div>
+        </td>
+    </tr>
+</table>
         
         <div class="footer">
             <p>Documento generado el: {% now "d/m/Y H:i" %} | Boleta Interna de Calificaciones - Primer Periodo</p>
@@ -387,24 +456,19 @@
     <div class="no-print print-button">
         <button onclick="window.print()">🖨️ IMPRIMIR BOLETA OFICIAL</button>
     </div>
-
     <script>
         (function() {
-            // Valores desde el backend (Django)
             var socioValor = "{{ educ_socioemocional|default:'' }}";
             var vidaValor = "{{ vida_saludable|default:'' }}";
             
-            // Elementos de la O mayúscula
             var socioSi = document.getElementById('socio-si');
             var socioNo = document.getElementById('socio-no');
             var vidaSi = document.getElementById('vida-si');
             var vidaNo = document.getElementById('vida-no');
             
-            // Función para marcar la opción correcta con la letra O
             function marcarOpcion(elementoSi, elementoNo, valor) {
                 if (!elementoSi || !elementoNo) return;
                 
-                // Resetear estilos
                 elementoSi.style.fontWeight = 'normal';
                 elementoSi.style.textDecoration = 'none';
                 elementoSi.style.fontSize = '14px';
@@ -412,7 +476,6 @@
                 elementoNo.style.textDecoration = 'none';
                 elementoNo.style.fontSize = '14px';
                 
-                // Marcar según valor
                 if (valor && valor.toUpperCase() === 'SI') {
                     elementoSi.style.fontWeight = 'bold';
                     elementoSi.style.textDecoration = 'underline';

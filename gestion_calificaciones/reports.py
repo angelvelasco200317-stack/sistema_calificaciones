@@ -45,15 +45,14 @@ def generar_boleta_pdf(request, estudiante_id):
         materias_oficiales = [
             'Español',
             'Inglés',
-            'Artes (Artes Visuales)',
+            'Artes ',
             'Matemáticas',
             'Biología',
             'Geografía',
             'Historia',
             'Formación Cívica y Ética',
-            'Pecuaria',
             'Educación Física',
-            'Tecnología (Informática)'
+            'Tecnología '
         ]
         
         # Organizar calificaciones
@@ -72,21 +71,20 @@ def generar_boleta_pdf(request, estudiante_id):
                 
                 # Mapeo de materias de la base de datos a materias oficiales
                 mapeo_materias = {
-                    'espanol': 'Español',
-                    'ingles': 'Inglés',
-                    'artes': 'Artes (Artes Visuales)',  # Cambiado de 'Artes (Música)' a 'Artes (Artes Visuales)'
-                    'matematicas': 'Matemáticas',
-                    'fisica': 'Biología',  # Ajusta según tus necesidades
-                    'quimica': 'Biología',
-                    'geografia': 'Geografía',
-                    'historia': 'Historia',
-                    'formacion_civica': 'Formación Cívica y Ética',
-                    'pecuaria': 'Pecuaria',
-                    'educacion_fisica': 'Educación Física',
-                    'informatica': 'Tecnología (Informática)',
-                    'agritultura': 'Pecuaria',
-                    'pecuaria': 'Pecuaria',
-                }
+    'espanol': 'Español',
+    'ingles': 'Inglés',
+    'artes': 'Artes',
+    'matematicas': 'Matemáticas',
+    'fisica': 'Biología',
+    'quimica': 'Biología',
+    'biologia': 'Biología',
+    'geografia': 'Geografía',
+    'historia': 'Historia',
+    'formacion_civica': 'Formación Cívica y Ética',
+    'educacion_fisica': 'Educación Física',
+    'tecnologia': 'Tecnología',
+}
+                
                 
                 # Buscar materia correspondiente usando el código de la materia
                 materia_codigo = materia_db.nombre  # Esto es el valor del choice
