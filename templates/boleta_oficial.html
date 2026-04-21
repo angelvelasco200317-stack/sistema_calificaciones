@@ -2,39 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>BOLETA INTERNA DE CALIFICACIONES - S.T. N°63</title>
+    <title>BOLETA DE CALIFICACIONES - S.T. N°63</title>
     <style>
+        /* === ESTILOS GENERALES === */
         @page {
             size: letter;
-            margin: 0.2in 0.25in 0.2in 0.25in;
+            margin: 0.2in 0.25in;
         }
         
         @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                background: white;
-            }
-            .no-print {
-                display: none;
-            }
-            .document {
-                box-shadow: none;
-                padding: 0;
-                margin: 0;
-                max-width: 100%;
-            }
-            .section-title, th {
-                background-color: #722F37 !important;
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
+            body { margin: 0; padding: 0; background: white; }
+            .no-print { display: none; }
+            .document { box-shadow: none; padding: 0; margin: 0; }
+            .section-title { background-color: #722F37 !important; print-color-adjust: exact; }
         }
         
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         
         body {
             font-family: 'Times New Roman', Times, serif;
@@ -49,41 +32,22 @@
             width: 100%;
             max-width: 8.5in;
             margin: 0 auto;
-            background-color: white;
-            padding: 6px 10px 8px 10px;
+            background: white;
+            padding: 6px 10px 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
+        /* === ENCABEZADO === */
         .header-official {
             text-align: center;
             margin-bottom: 6px;
             padding-bottom: 2px;
         }
         
-        .header-official h1 {
-            font-size: 18px;
-            margin: 0;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        .header-official h2 {
-            font-size: 10px;
-            margin: 2px 0;
-            font-weight: bold;
-        }
-        
-        .header-official h3 {
-            font-size: 9.5px;
-            margin: 2px 0;
-            font-weight: bold;
-        }
-        
-        .header-official h4 {
-            font-size: 8px;
-            margin: 1px 0;
-            font-weight: normal;
-        }
+        .header-official h1 { font-size: 18px; margin: 0; text-transform: uppercase; }
+        .header-official h2 { font-size: 10px; margin: 2px 0; }
+        .header-official h3 { font-size: 9.5px; margin: 2px 0; }
+        .header-official h4 { font-size: 8px; margin: 1px 0; font-weight: normal; }
         
         .header-official .cycle {
             font-weight: bold;
@@ -100,13 +64,14 @@
             margin: 4px 0 2px;
         }
         
+        /* === TABLAS GENERALES === */
         .document-table {
             width: 100%;
             border-collapse: collapse;
             border: 1px solid #000;
             font-size: 8.8px;
             margin-bottom: 8px;
-            background-color: #fff;
+            background: #fff;
         }
         
         .document-table td, .document-table th {
@@ -118,30 +83,31 @@
         
         .section-title {
             font-weight: bold;
-            text-align: center;
             background-color: #722F37;
             color: white;
             padding: 5px 3px;
             font-size: 9px;
+            text-align: center;
         }
         
+        /* === DATOS DEL ALUMNO === */
         .data-label {
             font-size: 8px;
-            text-align: center;
             background-color: #f1f0f0;
             padding: 3px;
             font-weight: 600;
+            text-align: center;
         }
         
         .data-value {
             font-weight: bold;
             text-align: center;
-            vertical-align: middle;
             font-size: 9.5px;
             padding: 4px;
             background-color: #fefaf5;
         }
         
+        /* === CALIFICACIONES === */
         .subject-cell {
             text-align: left;
             font-weight: bold;
@@ -163,21 +129,75 @@
         .faltas-cell {
             width: 30%;
             text-align: center;
-            vertical-align: middle;
             font-weight: bold;
             font-size: 10px;
             padding: 5px 3px;
             background-color: #fff4e4;
         }
         
-        .signature-cell {
-            height: 100px;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 8px;
-            padding: 5px;
+        .promedio-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1f4f2b;
         }
         
+        .inasistencias-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: #8b0000;
+        }
+        
+        /* === FIRMAS === */
+        .signature-cell {
+            height: 110px;
+            text-align: center;
+            vertical-align: top;
+            font-size: 9px;
+            padding: 10px 5px;
+        }
+        
+        .signature-period {
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #000;
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        .signature-text {
+            font-size: 8px;
+            margin-top: 5px;
+        }
+        
+        /* === OPCIONES SI/NO === */
+        .si-no-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: bold;
+            font-size: 9px;
+        }
+        
+        .option-letter {
+            display: inline-block;
+            width: 16px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        
+        /* === PIE DE PÁGINA === */
         .footer {
             text-align: center;
             font-size: 7px;
@@ -206,290 +226,173 @@
         .print-button button:hover {
             background-color: #591f26;
         }
-        
-        .si-no-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 18px;
-        }
-        
-        .option {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-weight: bold;
-            font-size: 9px;
-        }
-        
-        .option-letter {
-            display: inline-block;
-            width: 16px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            font-family: monospace;
-        }
-        
-        .selected-letter {
-            font-weight: 900;
-            text-decoration: underline;
-        }
-        
-        .promedio-value {
-            font-size: 16px;
-            font-weight: 800;
-            color: #1f4f2b;
-        }
-        
-        .inasistencias-value {
-            font-size: 16px;
-            font-weight: 800;
-            color: #8b0000;
-        }
     </style>
 </head>
 <body>
-    <div class="document">
-        <!-- ENCABEZADO OFICIAL -->
-        <div class="header-official">
-            <h1>OAXACA</h1>
-            <h2>GOBIERNO DEL ESTADO</h2>
-            <h2>EDUCACIÓN PÚBLICA</h2>
-            <div class="separator"></div>
-            <h3>INSTITUTO ESTATAL DE EDUCACIÓN PÚBLICA DE OAXACA</h3>
-            <h3>ESCUELA SECUNDARIA TÉCNICA NÚM. 63</h3>
-            <h4>SANTIAGO YOSONDUA, TLAXIACO, OAXACA</h4>
-            <h4>CLAVE: 20DST0050D   •   TURNO: MATUTINO</h4>
-            <div class="separator"></div>
-            <div class="cycle">CICLO ESCOLAR: {{ ciclo_escolar|default:"2025-2026" }}</div>
-        </div>
-        
-        <!-- DATOS DEL ALUMNO -->
-        <table class="document-table">
-            <tr><td colspan="3" class="section-title">DATOS DEL (DE LA) ALUMNO(A)</th></tr>
-            <tr>
-                <td class="data-value"><strong>{{ apellido_paterno|default:"______________"|upper }}</strong></td>
-                <td class="data-value"><strong>{{ apellido_materno|default:"______________"|upper }}</strong></td>
-                <td class="data-value"><strong>{{ nombres|default:"______________"|upper }}</strong></td>
-            </tr>
-            <tr>
-                <td class="data-label">PRIMER APELLIDO</td>
-                <td class="data-label">SEGUNDO APELLIDO</td>
-                <td class="data-label">NOMBRE(S)</td>
-            </tr>
-            <tr>
-                <td class="data-value">
-                    {% if estudiante.grado and estudiante.grupo %}
-                        {{ estudiante.grado }}° "{{ estudiante.grupo }}"
-                    {% elif estudiante.grado %}
-                        {{ estudiante.grado }}°
-                    {% elif estudiante.grupo %}
-                        GRUPO "{{ estudiante.grupo }}"
-                    {% else %}
-                        ______________
-                    {% endif %}
-                </td>
-                <td style="text-align:center;">
-                    <div class="si-no-container">
-                        <div class="option">
-                            <span>SI</span>
-                            <span class="option-letter" id="socio-si">O</span>
-                        </div>
-                        <div class="option">
-                            <span>NO</span>
-                            <span class="option-letter" id="socio-no">O</span>
-                        </div>
-                    </div>
-                </td>
-                <td style="text-align:center;">
-                    <div class="si-no-container">
-                        <div class="option">
-                            <span>SI</span>
-                            <span class="option-letter" id="vida-si">O</span>
-                        </div>
-                        <div class="option">
-                            <span>NO</span>
-                            <span class="option-letter" id="vida-no">O</span>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="data-label">GRADO Y GRUPO</td>
-                <td class="data-label">EDUC. SOCIOEMOCIONAL</td>
-                <td class="data-label">VIDA SALUDABLE</td>
-            </tr>
-        </table>
-        
-        <!-- CALIFICACIONES - ORDEN CORREGIDO -->
-        <table class="document-table">
-            <thead>
-                <tr>
-                    <td class="section-title" style="width:42%">DISCIPLINAS / ASIGNATURAS</td>
-                    <td class="section-title" style="width:28%">1er PERIODO<br>(CALIFICACIÓN)</td>
-                    <td class="section-title" style="width:30%">FALTAS (1er PERIODO)</td>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- 1. ESPAÑOL -->
-                <tr>
-                    <td class="subject-cell">español</td>
-                    <td class="grade-cell">{{ calificaciones.Español.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 2. INGLÉS -->
-                <tr>
-                    <td class="subject-cell">inglés</td>
-                    <td class="grade-cell">{{ calificaciones.Inglés.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 3. ARTES (ARTES VISUALES) -->
-                <tr>
-                    <td class="subject-cell">artes (artes visuales)</td>
-                    <td class="grade-cell">{{ calificaciones.Artes.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 4. MATEMÁTICAS -->
-                <tr>
-                    <td class="subject-cell">matemáticas</td>
-                    <td class="grade-cell">{{ calificaciones.Matemáticas.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 5. BIOLOGÍA -->
-                <tr>
-                    <td class="subject-cell">biología</td>
-                    <td class="grade-cell">{{ calificaciones.Biología.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 6. GEOGRAFÍA -->
-                <tr>
-                    <td class="subject-cell">geografía</td>
-                    <td class="grade-cell">{{ calificaciones.Geografía.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 7. HISTORIA -->
-                <tr>
-                    <td class="subject-cell">historia</td>
-                    <td class="grade-cell">{{ calificaciones.Historia.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 8. FORMACIÓN CÍVICA Y ÉTICA -->
-                <tr>
-                    <td class="subject-cell">formación cívica y ética</td>
-                    <td class="grade-cell">{{ calificaciones.Formación_Cívica_y_Ética.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 9. TECNOLOGÍA (solo tecnología, sin informática) -->
-                <tr>
-                    <td class="subject-cell">tecnología</td>
-                    <td class="grade-cell">{{ calificaciones.Tecnología.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-                <!-- 10. EDUCACIÓN FÍSICA -->
-                <tr>
-                    <td class="subject-cell">educación física</td>
-                    <td class="grade-cell">{{ calificaciones.Educación_Física.1|default:"---"|floatformat:2 }}</td>
-                    <td class="faltas-cell"></td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <!-- PROMEDIO FINAL E INASISTENCIAS -->
-        <table class="document-table">
-            <tr>
-                <td class="section-title" style="width:50%">PROMEDIO FINAL DEL PRIMER PERIODO</td>
-                <td class="section-title" style="width:50%">INASISTENCIAS TOTALES</td>
-            </tr>
-            <tr>
-                <td class="grade-cell" style="padding: 6px;"><span class="promedio-value">{{ promedio_general|default:"0.00"|floatformat:1 }}</span></td>
-                <td class="grade-cell" style="padding: 6px;"><span class="inasistencias-value">{{ total_inasistencias|default:"___" }}</span></td>
-            </tr>
-        </table>
-        
-        <!-- FIRMAS DE LOS TUTORES -->
-<table class="document-table">
-    <tr>
-        <td colspan="3" class="section-title" style="background-color: #722F37; font-size: 11px; letter-spacing: 1px;">
-            ✍️ FIRMA DE LA MADRE, PADRE DE FAMILIA O TUTOR(A) ✍️
-        </th>
-    </tr>
-    <tr>
-        <!-- PRIMER PERIODO -->
-        <td class="signature-cell" style="height: 120px; vertical-align: top; background-color: #fefaf5;">
-            <div style="font-weight: bold; font-size: 11px; color: #722F37; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px dotted #722F37; display: inline-block;">
-                PRIMER PERIODO
-            </div>
-            <div style="margin-top: 15px;"></div>
-            <div style="border-bottom: 2px solid #333; width: 90%; margin: 20px auto 5px auto; border-radius: 2px;"></div>
-            <div style="margin-top: 6px; font-size: 9px; color: #555; font-style: italic;">Firma</div>
-        </td>
-        
-        <!-- SEGUNDO PERIODO -->
-        <td class="signature-cell" style="height: 120px; vertical-align: top; background-color: #fefaf5;">
-            <div style="font-weight: bold; font-size: 11px; color: #722F37; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px dotted #722F37; display: inline-block;">
-                SEGUNDO PERIODO
-            </div>
-            <div style="margin-top: 15px;"></div>
-            <div style="border-bottom: 2px solid #333; width: 90%; margin: 20px auto 5px auto; border-radius: 2px;"></div>
-            <div style="margin-top: 6px; font-size: 9px; color: #555; font-style: italic;">Firma</div>
-        </td>
-        
-        <!-- TERCER PERIODO -->
-        <td class="signature-cell" style="height: 120px; vertical-align: top; background-color: #fefaf5;">
-            <div style="font-weight: bold; font-size: 11px; color: #722F37; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px dotted #722F37; display: inline-block;">
-                TERCER PERIODO
-            </div>
-            <div style="margin-top: 15px;"></div>
-            <div style="border-bottom: 2px solid #333; width: 90%; margin: 20px auto 5px auto; border-radius: 2px;"></div>
-            <div style="margin-top: 6px; font-size: 9px; color: #555; font-style: italic;">Firma</div>
-        </td>
-    </tr>
-</table>
-        
-        <div class="footer">
-            <p>Documento generado el: {% now "d/m/Y H:i" %} | Boleta Interna de Calificaciones - Primer Periodo</p>
-            <p>SEP - IEEPO • Calificación mínima aprobatoria: 6.0</p>
-        </div>
+<div class="document">
+    
+    <!-- ==================== ENCABEZADO OFICIAL ==================== -->
+    <div class="header-official">
+        <h1>OAXACA</h1>
+        <h2>GOBIERNO DEL ESTADO</h2>
+        <h2>EDUCACIÓN PÚBLICA</h2>
+        <div class="separator"></div>
+        <h3>INSTITUTO ESTATAL DE EDUCACIÓN PÚBLICA DE OAXACA</h3>
+        <h3>ESCUELA SECUNDARIA TÉCNICA NÚM. 63</h3>
+        <h4>SANTIAGO YOSONDUA, TLAXIACO, OAXACA</h4>
+        <h4>CLAVE: 20DST0050D • TURNO: MATUTINO</h4>
+        <div class="separator"></div>
+        <div class="cycle">CICLO ESCOLAR: {{ ciclo_escolar|default:"2025-2026" }}</div>
     </div>
     
-    <div class="no-print print-button">
-        <button onclick="window.print()">🖨️ IMPRIMIR BOLETA OFICIAL</button>
+    <!-- ==================== DATOS DEL ALUMNO ==================== -->
+    <table class="document-table">
+        <tr><td colspan="3" class="section-title">DATOS DEL (DE LA) ALUMNO(A)</th></tr>
+        <tr>
+            <td class="data-value"><strong>{{ apellido_paterno|default:"______________"|upper }}</strong></td>
+            <td class="data-value"><strong>{{ apellido_materno|default:"______________"|upper }}</strong></td>
+            <td class="data-value"><strong>{{ nombres|default:"______________"|upper }}</strong></td>
+        </tr>
+        <tr>
+            <td class="data-label">PRIMER APELLIDO</td>
+            <td class="data-label">SEGUNDO APELLIDO</td>
+            <td class="data-label">NOMBRE(S)</td>
+        </tr>
+        <tr>
+            <td class="data-value">
+                {% if estudiante.grado and estudiante.grupo %}
+                    {{ estudiante.grado }}° "{{ estudiante.grupo }}"
+                {% elif estudiante.grado %}
+                    {{ estudiante.grado }}°
+                {% elif estudiante.grupo %}
+                    GRUPO "{{ estudiante.grupo }}"
+                {% else %}
+                    ______________
+                {% endif %}
+            </td>
+            <td style="text-align:center;">
+                <div class="si-no-container">
+                    <div class="option"><span>SI</span><span class="option-letter" id="socio-si">O</span></div>
+                    <div class="option"><span>NO</span><span class="option-letter" id="socio-no">O</span></div>
+                </div>
+            </td>
+            <td style="text-align:center;">
+                <div class="si-no-container">
+                    <div class="option"><span>SI</span><span class="option-letter" id="vida-si">O</span></div>
+                    <div class="option"><span>NO</span><span class="option-letter" id="vida-no">O</span></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="data-label">GRADO Y GRUPO</td>
+            <td class="data-label">EDUC. SOCIOEMOCIONAL</td>
+            <td class="data-label">VIDA SALUDABLE</td>
+        </tr>
+    </table>
+    
+    <!-- ==================== CALIFICACIONES ==================== -->
+    <table class="document-table">
+        <thead>
+            <tr>
+                <td class="section-title" style="width:42%">DISCIPLINAS / ASIGNATURAS</td>
+                <td class="section-title" style="width:28%">1er PERIODO<br>(CALIFICACIÓN)</td>
+                <td class="section-title" style="width:30%">FALTAS (1er PERIODO)</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="subject-cell">español</td><td class="grade-cell">{{ calificaciones.Español.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">inglés</td><td class="grade-cell">{{ calificaciones.Inglés.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">artes (artes visuales)</td><td class="grade-cell">{{ calificaciones.Artes.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">matemáticas</td><td class="grade-cell">{{ calificaciones.Matemáticas.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">biología</td><td class="grade-cell">{{ calificaciones.Biología.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">geografía</td><td class="grade-cell">{{ calificaciones.Geografía.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">historia</td><td class="grade-cell">{{ calificaciones.Historia.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">formación cívica y ética</td><td class="grade-cell">{{ calificaciones.Formación_Cívica_y_Ética.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">tecnología</td><td class="grade-cell">{{ calificaciones.Tecnología.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+            <tr><td class="subject-cell">educación física</td><td class="grade-cell">{{ calificaciones.Educación_Física.1|default:"---"|floatformat:0 }}</td><td class="faltas-cell"></td></tr>
+        </tbody>
+    </table>
+    
+    <!-- ==================== PROMEDIO E INASISTENCIAS ==================== -->
+    <table class="document-table">
+        <tr>
+            <td class="section-title" style="width:50%">PROMEDIO FINAL DEL PRIMER PERIODO</td>
+            <td class="section-title" style="width:50%">INASISTENCIAS TOTALES</td>
+        </tr>
+        <tr>
+            <td class="grade-cell" style="padding:6px;"><span class="promedio-value">{{ promedio_general|default:"0"|floatformat:0 }}</span></td>
+            <td class="grade-cell" style="padding:6px;"><span class="inasistencias-value">{{ total_inasistencias|default:"___" }}</span></td>
+        </tr>
+    </table>
+    
+    <!-- ==================== FIRMAS ==================== -->
+    <table class="document-table">
+        <tr><td colspan="3" class="section-title">FIRMA DE LA MADRE, PADRE DE FAMILIA O TUTOR(A)</th></tr>
+        <tr>
+            <td class="signature-cell">
+                <div class="signature-period">PRIMER PERIODO</div>
+                <div style="margin-top:20px;">
+                    <div class="signature-line"></div>
+                    <div class="signature-text">Firma</div>
+                </div>
+            </td>
+            <td class="signature-cell">
+                <div class="signature-period">SEGUNDO PERIODO</div>
+                <div style="margin-top:20px;">
+                    <div class="signature-line"></div>
+                    <div class="signature-text">Firma</div>
+                </div>
+            </td>
+            <td class="signature-cell">
+                <div class="signature-period">TERCER PERIODO</div>
+                <div style="margin-top:20px;">
+                    <div class="signature-line"></div>
+                    <div class="signature-text">Firma</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- ==================== PIE DE PÁGINA ==================== -->
+    <div class="footer">
+        <p>Documento generado el: {% now "d/m/Y H:i" %} | Boleta Interna de Calificaciones - Primer Periodo</p>
+        <p>SEP - IEEPO • Calificación mínima aprobatoria: 6.0</p>
     </div>
-    <script>
-        (function() {
-            var socioValor = "{{ educ_socioemocional|default:'' }}";
-            var vidaValor = "{{ vida_saludable|default:'' }}";
-            
-            var socioSi = document.getElementById('socio-si');
-            var socioNo = document.getElementById('socio-no');
-            var vidaSi = document.getElementById('vida-si');
-            var vidaNo = document.getElementById('vida-no');
-            
-            function marcarOpcion(elementoSi, elementoNo, valor) {
-                if (!elementoSi || !elementoNo) return;
-                
-                elementoSi.style.fontWeight = 'normal';
-                elementoSi.style.textDecoration = 'none';
-                elementoSi.style.fontSize = '14px';
-                elementoNo.style.fontWeight = 'normal';
-                elementoNo.style.textDecoration = 'none';
-                elementoNo.style.fontSize = '14px';
-                
-                if (valor && valor.toUpperCase() === 'SI') {
-                    elementoSi.style.fontWeight = 'bold';
-                    elementoSi.style.textDecoration = 'underline';
-                    elementoSi.style.fontSize = '16px';
-                } else if (valor && valor.toUpperCase() === 'NO') {
-                    elementoNo.style.fontWeight = 'bold';
-                    elementoNo.style.textDecoration = 'underline';
-                    elementoNo.style.fontSize = '16px';
-                }
+</div>
+
+<!-- ==================== BOTÓN DE IMPRESIÓN ==================== -->
+<div class="no-print print-button">
+    <button onclick="window.print()">🖨️ IMPRIMIR BOLETA OFICIAL</button>
+</div>
+
+<script>
+    (function() {
+        var socioValor = "{{ educ_socioemocional|default:'' }}";
+        var vidaValor = "{{ vida_saludable|default:'' }}";
+        
+        var socioSi = document.getElementById('socio-si');
+        var socioNo = document.getElementById('socio-no');
+        var vidaSi = document.getElementById('vida-si');
+        var vidaNo = document.getElementById('vida-no');
+        
+        function marcarOpcion(elSi, elNo, valor) {
+            if (!elSi || !elNo) return;
+            elSi.style.fontWeight = elSi.style.textDecoration = elNo.style.fontWeight = elNo.style.textDecoration = 'normal';
+            elSi.style.fontSize = elNo.style.fontSize = '14px';
+            if (valor && valor.toUpperCase() === 'SI') {
+                elSi.style.fontWeight = 'bold';
+                elSi.style.textDecoration = 'underline';
+                elSi.style.fontSize = '16px';
+            } else if (valor && valor.toUpperCase() === 'NO') {
+                elNo.style.fontWeight = 'bold';
+                elNo.style.textDecoration = 'underline';
+                elNo.style.fontSize = '16px';
             }
-            
-            marcarOpcion(socioSi, socioNo, socioValor);
-            marcarOpcion(vidaSi, vidaNo, vidaValor);
-        })();
-    </script>
+        }
+        
+        marcarOpcion(socioSi, socioNo, socioValor);
+        marcarOpcion(vidaSi, vidaNo, vidaValor);
+    })();
+</script>
 </body>
 </html>
